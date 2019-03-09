@@ -11,4 +11,6 @@ def dictionary_fetch (key):
 
 
 # print(dictionary_fetch('rain'))
-print(dictionary_fetch('rain'))
+word = input('Please enter word: ')
+print(dictionary_fetch(word))
+
