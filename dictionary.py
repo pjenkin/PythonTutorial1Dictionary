@@ -19,6 +19,10 @@ def dictionary_fetch (key):
             # return data[key]
             # return '\n'.join(data[key.capitalize()])         # couldn't get *data[key] to work
             return '\n'.join(data[key.title()])         # title() in case more than 1 word (e.g. new york)
+        elif key.upper() in data:
+            # return data[key]
+            # return '\n'.join(data[key.capitalize()])         # couldn't get *data[key] to work
+            return '\n'.join(data[key.upper()])         # title() in case more than 1 word (e.g. new york)
         elif len(close_matches) > 0:
             # return 'Did you mean %s?' % get_close_matches(key, data, cutoff=0.8)[0]
             prompt_string = f'Did you mean {close_matches[0]} instead ? (\'Y\' for Yes \'N\' for No)'
