@@ -9,18 +9,19 @@ def dictionary_fetch (key):
     #     return data[key]
     data = json.load(open('UdemyDictionaryData.json'))  # could be from an API
 
-    key = key.lower()
-    close_matches = get_close_matches(key, data, cutoff = 0.8)
+    key = key.lower();     close_matches = get_close_matches(key, data, cutoff = 0.8)
 
     try:
         if key in data:
-            return data[key]
+            # return data[key]
+            return '\n'.join(data[key])         # couldn't get *data[key] to work
         elif len(close_matches) > 0:
             # return 'Did you mean %s?' % get_close_matches(key, data, cutoff=0.8)[0]
             prompt_string = f'Did you mean {close_matches[0]} instead ? (\'Y\' for Yes \'N\' for No)'
             retry = input(prompt_string)
             if retry.lower() == 'y':
-                return data[close_matches[0]]
+                # return data[close_matches[0]]
+                return '\n'.join(data[close_matches[0]])
             else:
                 return 'Unsure regarding this word - please check'
         else:
