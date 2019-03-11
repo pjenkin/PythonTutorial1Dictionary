@@ -32,7 +32,15 @@ def dictionary_fetch (key):
     #     return 'Error occurred'
 
 
-# print(dictionary_fetch('rain'))
-word = input('Please enter word: ')
-print(dictionary_fetch(word))
+searching = True
+
+while searching:
+    # print(dictionary_fetch('rain'))
+    print('Enter z to quit')
+    word = input('Please enter word: ')
+    if word == 'z':
+        searching = False
+        print('Bye bye!')
+        break
+    print(dictionary_fetch(word))
 
