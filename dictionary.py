@@ -1,4 +1,6 @@
 import json
+import difflib
+from difflib import SequenceMatcher, get_close_matches
 
 
 def dictionary_fetch (key):
@@ -12,8 +14,13 @@ def dictionary_fetch (key):
     try:
         if key in data:
             return data[key]
+        elif len(get_close_matches(key, data, cutoff = 0.8)) > 0:
+            return f'Did you mean {0} instead ?', get_close_matches(key, data, cutoff = 0.8)[0]
+            # return 'Did you mean %s?' % get_close_matches(key, data, cutoff=0.8)[0]
     except KeyError:
         return 'No entry found for this word'
+    except:
+        return 'Error occurred'
 
 
 # print(dictionary_fetch('rain'))
